@@ -1,5 +1,5 @@
-import { useRoutesAuth } from './mailing'
+import { useRoutesMailer } from './mailing'
 
 export function useRoutes () {
-  useRoutesAuth()
+  useRoutesMailer()
 }
