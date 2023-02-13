@@ -1,9 +1,0 @@
-POST http://localhost:4001/api/auth/register HTTP/1.1
-content-type: application/json
-
-{
-    "name": "barby",
-    "email": "barby@vip.es",
-    "password": "1234",
-    "type": "party"
-}
