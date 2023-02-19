@@ -16,9 +16,10 @@ type EmailResponse = {
 export const sendCaseUse = async (settings: unknown): Promise<HTTPReturn> => {
   const response = settings as EmailResponse
   const { from, to, subject, message, template } = response.body 
-  await mailer.send(from, to, subject, message, template)
+  const isSended = await mailer.send(from, to, subject, message, template)
+
   return {
     response: {},
-    code: statusHTTP.OK,
+    code: isSended ? statusHTTP.OK : statusHTTP.INTERNAL_SERVER_ERROR,
   }
 }

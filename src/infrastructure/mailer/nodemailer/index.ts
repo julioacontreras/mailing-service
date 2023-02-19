@@ -11,7 +11,7 @@ export const mailer = {
     subject: string,
     message: string,
     templateId: string,
-  ): Promise<unknown> {
+  ): Promise<boolean> {
     const {MAILER_USER, MAILER_PASS, MAILER_HOST, MAILER_PORT} = process.env;
     if (
       !MAILER_USER ||
@@ -32,15 +32,17 @@ export const mailer = {
     })
 
     const body = prepareTemplate(templateId, message)
-
-    // send mail with defined transport object
-    await transporter.sendMail({
-      from, // sender address
-      to, // list of receivers
-      subject, // Subject line
-      html: body, // html body
-    })
- 
-    return {}
+    try {
+      // send mail with defined transport object
+      await transporter.sendMail({
+        from, // sender address
+        to, // list of receivers
+        subject, // Subject line
+        html: body, // html body
+      })
+      return true
+    } catch (error) {
+      return false
+    }
   },
 }

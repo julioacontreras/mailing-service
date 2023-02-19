@@ -5,5 +5,5 @@ export interface Mailer {
     message: string,
     subject: string,
     template: string,
-  ) => void
+  ) => Promise<boolean>
 }

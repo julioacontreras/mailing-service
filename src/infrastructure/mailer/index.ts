@@ -1,4 +1,4 @@
 import { setMailer } from '@/adapters/mailer'
-import { mailer } from './nodemailer' 
+import { mailer } from './sendgrid' 
 
 setMailer(mailer)
